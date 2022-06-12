@@ -1,5 +1,10 @@
 #!/bin/bash
 
+
+
+
+
+
 set -e
 
 #############################################################################
@@ -29,7 +34,7 @@ set -e
 #############################################################################
 
 SCRIPT_VERSION="v0.11.0"
-GITHUB_BASE_URL="https://raw.githubusercontent.com/vilhelmprytz/pterodactyl-installer"
+GITHUB_BASE_URL="https://raw.githubusercontent.com/tuxisawesome/pterodactyl-installer"
 
 LOG_PATH="/var/log/pterodactyl-installer.log"
 
@@ -38,6 +43,10 @@ if [[ $EUID -ne 0 ]]; then
   echo "* This script must be executed with root privileges (sudo)." 1>&2
   exit 1
 fi
+
+apt-get update
+apt-get upgrade -y
+
 
 # check for curl
 if ! [ -x "$(command -v curl)" ]; then
@@ -71,6 +80,7 @@ done=false
 output "Pterodactyl installation script @ $SCRIPT_VERSION"
 output
 output "Copyright (C) 2018 - 2022, Vilhelm Prytz, <vilhelm@prytznet.se>"
+output "Spin provided by Walter Brobson, installs a few more tools and other stuff"
 output "https://github.com/vilhelmprytz/pterodactyl-installer"
 output
 output "Sponsoring/Donations: https://github.com/vilhelmprytz/pterodactyl-installer?sponsor=1"
